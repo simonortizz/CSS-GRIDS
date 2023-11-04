@@ -17,8 +17,7 @@ body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, auto);
-    max-width: 1000px;
-    gap: 5px;
+    /* max-width: 1000px; */
 }
 
 .header {
