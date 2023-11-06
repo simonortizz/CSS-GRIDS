@@ -1,3 +1,4 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     font-size: large;
 }
 
+/* CENTRANDO EL CONTAINER */
 body {
     display: flex;
     justify-content: center;
@@ -13,16 +15,24 @@ body {
     padding: 20px;
 }
 
+/* MAQUETANDO LA GRILLA */
 .container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, auto);
-    /* max-width: 1000px; */
+    max-width: 1000px;
+    grid-template-areas: 
+    "header header header header header"
+    "sb1 main main main sb2"
+    "w1 w2 w3 w4 w5"
+    "footer footer footer footer footer"
+    ;
 }
 
+/* APLICACION DE AREAS Y ESTILOS A LOS ELEMENTOS */
 .header {
     background-color: rgb(23, 14, 1);
-    grid-area: 1/1/2/6;
+    grid-area: header;
     height: 80px;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -35,7 +45,7 @@ body {
 
 .sidebar1 {
     background-color: rgb(72, 67, 67);
-    grid-area: 2/1/3/2;
+    grid-area: sb1;
     padding: 15px;
     text-align: center;
     color: rgb(184, 150, 87);
@@ -43,13 +53,13 @@ body {
 
 .main {
     background-color: rgb(180, 149, 91);
-    grid-area: 2/2/3/5;
+    grid-area: main;
     padding: 15px;
 }
 
 .sidebar2 {
     background-color: rgb(72, 67, 67);
-    grid-area: 2/5/3/6;
+    grid-area: sb2;
     padding: 15px;
     text-align: center;
     color: rgb(184, 150, 87);
@@ -58,35 +68,35 @@ body {
 .widget1 {
     height: 200px;
     background-color: rgb(255, 222, 159);
-    grid-area: 3/1/4/2;
+    grid-area: w1;
 }
 
 .widget2 {
     height: 200px;
     background-color: rgb(232, 199, 139);
-    grid-area: 3/2/4/3;
+    grid-area: w2;
 }
 
 .widget3 {
     height: 200px;
     background-color: rgb(200, 167, 107);
-    grid-area: 3/3/4/4;
+    grid-area: w3;
 }
 
 .widget4 {
     height: 200px;
     background-color: rgb(154, 125, 73);
-    grid-area: 3/4/4/5;
+    grid-area: w4;
 }
 
 .widget5 {
     height: 200px;
     background-color: rgb(137, 103, 42);
-    grid-area: 3/5/4/6;
+    grid-area: w5;
 }
 
 .footer {
-    grid-area: 4/1/5/6;
+    grid-area: footer;
     height: 200px;
     background-color: rgb(30, 23, 9);
     border-bottom-right-radius: 15px;
@@ -102,8 +112,51 @@ img {
     width: 10%;
 }
 
+/* CENTRANDO CONTENIDO DENTRO DE LOS ELEMENTOS */
 .header, .widget1, .widget2, .widget3, .widget4, .widget5 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 780px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(7, auto);
+        grid-template-areas: 
+        "header header"
+        "main main"
+        "sb1 sb2"
+        "w1 w2"
+        "w3 w4"
+        "w5 w5"
+        "footer footer"
+        ;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(11, auto);
+        grid-template-areas: 
+        "header"
+        "main"
+        "sb1"
+        "sb2"
+        "w1" 
+        "w2"
+        "w3" 
+        "w4"
+        "w5"
+        "footer"
+        ;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
 }
